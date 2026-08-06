@@ -1,0 +1,89 @@
+version: "3.9"
+
+services:
+
+  mysql:
+
+    image: mysql:8.0
+
+    container_name: mysql-db
+
+    restart: always
+
+    env_file:
+      - .env
+
+    environment:
+
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+      MYSQL_USER: ${MYSQL_USER}
+
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    ports:
+
+      - "3306:3306"
+
+    volumes:
+
+      - mysql-data:/var/lib/mysql
+
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    networks:
+
+      - workshop-network
+
+  backend:
+
+    build: ./backend
+
+    container_name: flask-api
+
+    restart: always
+
+    env_file:
+      - .env
+
+    ports:
+
+      - "5000:5000"
+
+    depends_on:
+
+      - mysql
+
+    networks:
+
+      - workshop-network
+
+  frontend:
+
+    build: ./frontend
+
+    container_name: nginx-ui
+
+    restart: always
+
+    ports:
+
+      - "80:80"
+
+    depends_on:
+
+      - backend
+
+    networks:
+
+      - workshop-network
+
+volumes:
+
+  mysql-data:
+
+networks:
+
+  workshop-network:

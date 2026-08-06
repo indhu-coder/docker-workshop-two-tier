@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Workshop - Student Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>🐳 Docker Workshop</h1>
+
+    <p>Student Management System</p>
+
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Add Student</h2>
+
+        <form id="studentForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Student Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="text"
+                id="course"
+                placeholder="Course"
+                required
+            >
+
+            <button type="submit">
+
+                Add Student
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Search Student</h2>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search..."
+            onkeyup="searchStudent()"
+        >
+
+    </div>
+
+    <div class="card">
+
+        <h2>Student List</h2>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Name</th>
+
+                <th>Email</th>
+
+                <th>Course</th>
+
+                <th>Action</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="studentTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
