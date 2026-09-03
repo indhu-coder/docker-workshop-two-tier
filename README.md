@@ -8,6 +8,7 @@ https://docs.docker.com/engine/install/ubuntu/
 #command to give permession 
 
 sudo usermod -aG docker ubuntu 
+newgrp docker
 
 #change in the frontend script.js 
 
