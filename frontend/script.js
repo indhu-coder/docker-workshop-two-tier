@@ -1,4 +1,4 @@
-const API="http://localhost:5000/students";
+const API="http://3.133.10692:5000/students";
 
 document.getElementById("studentForm")
 
